@@ -1,0 +1,21 @@
+.loading {
+  background-color: rgba(131, 174, 255, 0.575);
+  width: 100vw;
+  height: 100vh;
+}
+
+.spiner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.text {
+  padding: 20px;
+  margin: 0px auto;
+  color: white;
+}
+
+.mediaCard {
+  width: 100px;
+}

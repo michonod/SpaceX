@@ -1,24 +1,55 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { useQuery, gql } from "@apollo/client";
+import Loading from "./components/Loading";
+import { Route, Switch, Redirect } from "react-router-dom";
+import CardDisplay from "./components/CardDisplay";
+import RocketInfo from "./components/RocketInfo";
+import NotFound from "./components/NotFound";
+
+const ALL_MISSIONS = gql`
+  query GetLaunches {
+    launchesPast {
+      links {
+        flickr_images
+        video_link
+        wikipedia
+        article_link
+      }
+      details
+      id
+      mission_name
+      rocket {
+        rocket_name
+        rocket_type
+      }
+      launch_year
+      launch_date_utc
+      is_tentative
+    }
+  }
+`;
 
 function App() {
+  const { loading, error, data } = useQuery(ALL_MISSIONS);
+  console.log(data);
+  if (loading) return <Loading />;
+  if (error) return <h1>Something went wrong...</h1>;
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Switch>
+      <Route path="/" exact>
+        <Redirect to="/home" />
+      </Route>
+      <Route path="/home">
+        <CardDisplay data={data} />
+      </Route>
+      <Route path="/rocket/:rocketId">
+        <RocketInfo data={data} />
+      </Route>
+      <Route path="/*">
+        <NotFound />
+      </Route>
+    </Switch>
   );
 }
 
