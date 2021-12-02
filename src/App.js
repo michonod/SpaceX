@@ -38,9 +38,9 @@ function App() {
   return (
     <Switch>
       <Route path="/" exact>
-        <Redirect to="/home" />
+        <Redirect to="/rocket" />
       </Route>
-      <Route path="/home">
+      <Route path="/rocket" exact>
         <CardDisplay data={data} />
       </Route>
       <Route path="/rocket/:rocketId">
