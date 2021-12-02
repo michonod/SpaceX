@@ -1,4 +1,4 @@
-import { Button, useMediaQuery } from "@mui/material";
+import { Button } from "@mui/material";
 import React from "react";
 import classes from "./RocketInfoCard.module.css";
 import { Link } from "react-router-dom";
@@ -19,7 +19,6 @@ const RocketInfoCard = ({
   const day = date.getDate();
   const hours = date.getHours();
   const minutes = date.getMinutes();
-  const activeBtn = useMediaQuery("(max-width:768px)");
 
   console.log(date);
   return (
@@ -34,8 +33,12 @@ const RocketInfoCard = ({
           Go back
         </Button>
       </Link>
-      {image ? <img className={classes.rocketCardImage} src={image}></img> : ""}
       <div className={classes.rocketCardWrapper}>
+        {image ? (
+          <img className={classes.rocketCardImage} src={image}></img>
+        ) : (
+          ""
+        )}
         <h1>Mission name: {name}</h1>
         <p>{details ? details : ""}</p>
 
