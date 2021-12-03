@@ -3,9 +3,7 @@ import RocketInfoCard from "./RocketInfoCard";
 
 const RocketInfo = ({ data }) => {
   const params = useParams();
-  const id = 109 - +params.rocketId;
-  console.log(id);
-  console.log(data);
+  const id = data.launchesPast.length - +params.rocketId;
   const mappedDetail = data.launchesPast[id].details;
   const mappedName = data.launchesPast[id].mission_name;
   const mappedImages = data.launchesPast[id].links.flickr_images[0];

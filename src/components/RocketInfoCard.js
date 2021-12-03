@@ -20,7 +20,6 @@ const RocketInfoCard = ({
   const hours = date.getHours();
   const minutes = date.getMinutes();
 
-  console.log(date);
   return (
     <div className={classes.rocketCard}>
       <Link to="/">
@@ -35,14 +34,18 @@ const RocketInfoCard = ({
       </Link>
       <div className={classes.rocketCardWrapper}>
         {image ? (
-          <img className={classes.rocketCardImage} src={image}></img>
+          <img
+            className={classes.rocketCardImage}
+            src={image}
+            alt="rockets"
+          ></img>
         ) : (
           ""
         )}
         <h1>Mission name: {name}</h1>
         <p>{details ? details : ""}</p>
 
-        <a href={link} target="_blank">
+        <a href={link} target="_blank" rel="noreferrer">
           {link && (
             <Button
               style={{
@@ -58,7 +61,7 @@ const RocketInfoCard = ({
           )}
         </a>
         {video && (
-          <a href={video} target="_blank">
+          <a href={video} target="_blank" rel="noreferrer">
             <Button
               style={{
                 fontSize: "16px",

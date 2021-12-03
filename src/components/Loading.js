@@ -2,7 +2,6 @@ import * as React from "react";
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
 import classes from "./Loading.module.css";
-import spaceXImg from "../assets/SpaceX-Logo.png";
 
 export default function Loading() {
   return (

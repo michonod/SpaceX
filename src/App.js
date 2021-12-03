@@ -31,7 +31,6 @@ const ALL_MISSIONS = gql`
 
 function App() {
   const { loading, error, data } = useQuery(ALL_MISSIONS);
-  console.log(data);
   if (loading) return <Loading />;
   if (error) return <h1>Something went wrong...</h1>;
 
@@ -46,7 +45,7 @@ function App() {
       <Route path="/rocket/:rocketId">
         <RocketInfo data={data} />
       </Route>
-      <Route path="/*">
+      <Route path="*" exact>
         <NotFound />
       </Route>
     </Switch>
